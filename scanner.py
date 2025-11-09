@@ -116,7 +116,8 @@ def main():
 
     for i in range(1, 255):
         ip = f"{prefix}{i}"
-        now = datetime.utcnow().isoformat() + "Z"
+        from datetime import datetime, timezone
+        now = datetime.now(timezone.utc).isoformat()
         alive = ping(ip)
         if alive:
             mac = get_mac_from_arp(ip)
